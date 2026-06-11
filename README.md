@@ -1,9 +1,15 @@
 <p align="center">
-  <a href="https://nc100.netlify.app/">
-    <img 
-      src="https://img.shields.io/badge/VIEW%20DOCUMENTATION-00C2FF?style=for-the-badge&logoColor=white&labelColor=000000"
+  <a href="https://nc100.netlify.app/" style="text-decoration:none;">
+    <img
+      src="https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/svg/unstop-logo.svg"
+      height="28"
+      alt="Unstop"
+      style="vertical-align:middle;margin-right:8px;"
+    />
+    <img
+      src="https://img.shields.io/badge/VIEW%20DOCUMENTATION-00C2FF?style=for-the-badge&labelColor=000000"
       alt="Documentation"
+      style="vertical-align:middle;"
     />
   </a>
 </p>
-
