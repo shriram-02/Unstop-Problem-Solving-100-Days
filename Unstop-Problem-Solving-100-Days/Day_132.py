@@ -1,41 +1,23 @@
-from collections import deque
+import sys
 
-n, d = map(int, input().split())
-a = list(map(int, input().split()))
+def solve():
+    input = sys.stdin.readline
+    n, w = map(int, input().split())
+    energy = list(map(int, input().split()))
 
-left = 0
-best_len = 0
-best_start = 1
+    INF = 10**30
+    dp = [INF] * n
+    dp[0] = energy[0]
 
-freq = {}
-minq = deque()
-maxq = deque()
+    # dp[i] = minimum cost to reach night i as an active night
+    for i in range(1, n):
+        for j in range(i):
+            dp[i] = min(
+                dp[i],
+                dp[j] + energy[i] + w * (i - j) ** 2
+            )
 
-for right in range(n):
-    freq[a[right]] = freq.get(a[right], 0) + 1
+    print(dp[-1])
 
-    while minq and a[minq[-1]] >= a[right]:
-        minq.pop()
-    minq.append(right)
-
-    while maxq and a[maxq[-1]] <= a[right]:
-        maxq.pop()
-    maxq.append(right)
-
-    while a[maxq[0]] - a[minq[0]] > d or freq[a[right]] > 1:
-        freq[a[left]] -= 1
-
-        if minq[0] == left:
-            minq.popleft()
-        if maxq[0] == left:
-            maxq.popleft()
-
-        left += 1
-
-    length = right - left + 1
-
-    if length > best_len:
-        best_len = length
-        best_start = left + 1
-
-print(best_len, best_start)
+if __name__ == "__main__":
+    solve()
